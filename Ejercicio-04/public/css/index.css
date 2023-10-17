@@ -1,0 +1,15 @@
+/*      Styles      */
+
+.box {
+    margin: 10px;
+}
+
+.box p {
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
