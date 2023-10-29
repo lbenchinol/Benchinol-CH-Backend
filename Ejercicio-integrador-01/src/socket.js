@@ -1,6 +1,6 @@
 import { Server } from 'socket.io';
-import ProductManager from './productManager.js';
-const productManager = new ProductManager('./products.json');
+
+import ProductManager from '../src/dao/productManager.js';
 
 let io;
 
@@ -10,7 +10,7 @@ export const init = (httpServer) => {
     io.on('connection', async (socketClient) => {
         console.log(`Nuevo cliente conectado (${socketClient.id})`);
 
-        const products = await productManager.getProducts();
+        const products = await ProductManager.getProducts();
 
         socketClient.emit('products-list-updated', { products });
 

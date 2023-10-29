@@ -1,10 +1,13 @@
-import app from './app.js';
-import { init } from './socket.js';
+import http from 'http';
 
+import app from './app.js';
+import { init } from './db/mongodb.js';
+
+await init();
+
+const server = http.createServer(app);
 const PORT = 8080;
 
-const httpServer = app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
-init(httpServer);

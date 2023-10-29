@@ -2,11 +2,13 @@ import express from 'express';
 import handlebars from 'express-handlebars';
 import path from 'path';
 
-import indexRouter from './routers/index.router.js';
-import productRouter from './routers/product.router.js';
-import cartRouter from './routers/cart.router.js';
-import realTimeProductsRouter from './routers/realTimeProducts.router.js';
 import { __dirname } from './utils.js';
+
+import productApiRouter from './routers/api/product.router.js';
+import cartApiRouter from './routers/api/cart.router.js';
+
+import indexViewRouter from './routers/views/index.router.js';
+import realTimeProductsViewRouter from './routers/views/realTimeProducts.router.js';
 
 const app = express();
 
@@ -18,8 +20,8 @@ app.engine('handlebars', handlebars.engine());
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'handlebars');
 
-app.use('/', indexRouter, realTimeProductsRouter);
-app.use('/api', productRouter, cartRouter);
+app.use('/', indexViewRouter, realTimeProductsViewRouter);
+app.use('/api', productApiRouter, cartApiRouter);
 
 app.use((error, req, res, next) => {
     const message = `Ha ocurrido un error desconocido: ${error.message}`;
