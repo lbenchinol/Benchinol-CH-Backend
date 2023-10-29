@@ -1,10 +1,10 @@
 import { Server } from 'socket.io';
 
-import ProductManager from '../src/dao/productManager.js';
+import ProductManager from './dao/productManager.js';
 
 let io;
 
-export const init = (httpServer) => {
+export const initSocket = (httpServer) => {
     io = new Server(httpServer);
 
     io.on('connection', async (socketClient) => {

@@ -8,7 +8,7 @@
 
         products.forEach((p) => {
             const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${p.id}</td>
+            tr.innerHTML = `<td>${p._id}</td>
             <td>${p.title}</td>
             <td>${p.description}</td>
             <td>${p.price}</td>

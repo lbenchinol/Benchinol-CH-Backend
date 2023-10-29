@@ -17,7 +17,7 @@ router.get('/products', async (req, res) => {
 router.get('/products/:pId', async (req, res) => {
     try {
         const { params: { pId } } = req;
-        const product = await ProductManager.getProductById(parseInt(pId));
+        const product = await ProductManager.getProductById(pId);
         res.status(200).json(product);
     } catch (error) {
         res.status(error.statusCode || 500).json({ message: error.message });
@@ -40,7 +40,7 @@ router.post('/products', async (req, res) => {
 router.put('/products/:pId', async (req, res) => {
     try {
         const { params: { pId } } = req;
-        await ProductManager.updateProduct(parseInt(pId), req.body);
+        await ProductManager.updateProduct(pId, req.body);
         res.status(200).json({ status: 'success', message: 'Producto actualizado correctamente' });
     } catch (error) {
         res.status(error.statusCode || 500).json({ message: error.message });
@@ -50,7 +50,7 @@ router.put('/products/:pId', async (req, res) => {
 router.delete('/products/:pId', async (req, res) => {
     try {
         const { params: { pId } } = req;
-        await ProductManager.deleteProduct(parseInt(pId));
+        await ProductManager.deleteProduct(pId);
         res.status(200).json({ status: 'success', message: 'Producto eliminado correctamente' });
     } catch (error) {
         res.status(error.statusCode || 500).json({ message: error.message });

@@ -63,9 +63,10 @@ export default class ProductManager {
         }
     }
 
-    static getProducts(query = {}) {
+    static async getProducts(query = {}) {
         const filter = {};
-        return ProductModel.find(filter).limit(query);
+        const products = await ProductModel.find(filter).limit(query);
+        return products.map(p => p.toJSON());
     }
 
     static async getProductById(id) {
@@ -73,7 +74,7 @@ export default class ProductManager {
         if (!product) {
             throw new Exception(`Error, el ID:${id} no se encontró en el listado de productos`, 404);
         } else {
-            return product;
+            return product.toJSON();
         }
     }
 }
