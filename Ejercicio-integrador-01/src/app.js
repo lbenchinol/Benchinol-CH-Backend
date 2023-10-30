@@ -9,6 +9,7 @@ import cartApiRouter from './routers/api/cart.router.js';
 
 import indexViewRouter from './routers/views/index.router.js';
 import realTimeProductsViewRouter from './routers/views/realTimeProducts.router.js';
+import chatViewRouter from './routers/views/chat.router.js';
 
 const app = express();
 
@@ -20,7 +21,7 @@ app.engine('handlebars', handlebars.engine());
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'handlebars');
 
-app.use('/', indexViewRouter, realTimeProductsViewRouter);
+app.use('/', indexViewRouter, realTimeProductsViewRouter, chatViewRouter);
 app.use('/api', productApiRouter, cartApiRouter);
 
 app.use((error, req, res, next) => {
