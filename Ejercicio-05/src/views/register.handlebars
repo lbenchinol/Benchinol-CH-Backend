@@ -1,0 +1,29 @@
+<article>
+    <form action="/api/sessions/register" method="post">
+        <header>
+            <h1>Registro</h1>
+        </header>
+        <div class="grid">
+            <label for="firstname">
+                Nombre
+                <input type="text" id="firstname" name="firstname" placeholder="Nombre" required>
+            </label>
+            <label for="lastname">
+                Apellido
+                <input type="text" id="lastname" name="lastname" placeholder="Apellido" required>
+            </label>
+            <label for="age">
+                Edad
+                <input type="number" id="age" name="age" placeholder="Edad" required>
+            </label>
+        </div>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+
+        <button type="submit">Registrarse</button>
+    </form>
+</article>
