@@ -1,7 +1,7 @@
 <article>
-    <form action="/api/sessions/login" method="post">
+    <form action="/api/session/login" method="post">
         <header>
-            <h1>Ientificación</h1>
+            <h1>Identificación</h1>
         </header>
         <label for="email">Correo electrónico</label>
         <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
@@ -11,7 +11,5 @@
 
         <button type="submit">Iniciar sesión</button>
     </form>
-    <button id="redirect-to-register">Registrarse</button>
+    <a class="center" href="/register" role="button">Registrarse</a>
 </article>
-
-<script src="/js/sessionUtils.js"></script>

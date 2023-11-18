@@ -5,17 +5,19 @@ const userAdmin = { first_name: 'Coder', last_name: 'House', email: 'adminCoder@
 
 export default class UserManager {
     static async createUser(body) {
-        const { first_name, last_name, email, age, password } = body;
+        const { first_name, last_name, email, age: ageString, password } = body;
 
         first_name !== "" ? first_name.trim() : first_name;
         last_name !== "" ? last_name.trim() : last_name;
         email !== "" ? email.trim() : email;
         password !== "" ? password.trim() : password;
+        const age = Number(ageString);
 
         if (first_name == "" || last_name == "" || email == "" || age < 18 || password == "") {
             throw new Exception('Ingrese los valores correctamente', 400);
         }
         const newUser = { first_name, last_name, email, age, password };
+
         await UserModel.create(newUser);
     }
 

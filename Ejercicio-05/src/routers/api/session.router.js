@@ -18,7 +18,8 @@ router.post('/session/login', async (req, res) => {
     const { body: { email, password } } = req;
     try {
         const user = await UserManager.getUser(email, password);
-        req.session.user = user;
+        const { first_name, last_name, role } = user;
+        req.session.user = { first_name, last_name, email, role };
         res.redirect('/products');
     } catch (error) {
         res.status(error.statusCode || 500).json({ message: error.message });

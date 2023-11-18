@@ -25,7 +25,7 @@ router.get('/register', publicRouter, (req, res) => {
 });
 
 router.get('/login', publicRouter, (req, res) => {
-    res.render('login', { title: 'Login' });
+    res.render('login', { title: 'Login', style: 'styles.css' });
 });
 
 router.get('/profile', privateRouter, (req, res) => {
