@@ -20,7 +20,7 @@ const githubOpts = {
 const cookieExtractor = (req) => {
     let token = null;
     if (req && req.signedCookies) {
-        token = signedCookies['access_token'];
+        token = req.signedCookies['access_token'];
     }
     return token;
 }
@@ -80,14 +80,10 @@ export const init = () => {
     }));
 
     passport.use('jwt', new JWTStrategy(jwtOpts, async (payload, done) => {
-        try {
-            done(null, payload);
-        } catch (error) {
-            done(new Exception(`Ocurrió un error durante la autenticación`, 400));
-        }
+        return done(null, payload);
     }));
 
-    passport.serializeUser((user, done) => {
+     passport.serializeUser((user, done) => {
         done(null, user._id);
     });
 

@@ -36,3 +36,16 @@ export const verifyToken = (token) => {
         });
     });
 };
+
+export const authMiddleware = (strategy) => (req, res, next) => {
+    passport.authenticate(strategy, function(error, payload, info) {
+      if (error) {
+        return next(error);
+      }
+      if (!payload) {
+        return res.status(401).json({ message: info.message ? info.message : info.toString() });
+      }
+      req.user = payload;
+      next();
+    })(req, res, next);
+  };
