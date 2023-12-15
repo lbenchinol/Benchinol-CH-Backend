@@ -1,4 +1,5 @@
 import ProductService from '../services/product.service.js';
+import { PORT } from '../server.js';
 
 export default class ProductController {
     static async get(limit = 10, page = 1, sort, category, stock) {

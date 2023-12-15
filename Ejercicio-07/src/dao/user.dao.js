@@ -6,7 +6,7 @@ export default class UserDao {
     }
 
     static getById(id) {
-        return UserModel.findById(id).populate('carts.cart');
+        return UserModel.findById(id);
     }
 
     static create(user) {

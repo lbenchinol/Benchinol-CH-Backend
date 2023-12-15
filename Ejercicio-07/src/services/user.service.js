@@ -1,12 +1,12 @@
 import UserDao from '../dao/user.dao.js';
 
 export default class UserService {
-    static get(email) {
-        return UserDao.get(email);
+    static async get(email) {
+        return await UserDao.get(email);
     }
 
-    static getById(id) {
-        return UserDao.getById(id);
+    static async getById(id) {
+        return await UserDao.getById(id);
     }
 
     static create(user) {

@@ -24,7 +24,7 @@ export default class UserController {
                 throw new Exception('Ingrese los valores correctamente', 400);
             }
         }
-        const cart = await CartController.addCart();
+        const cart = await CartController.create();
         const newUser = { first_name, last_name, email, age, password: createHash(password), provider, cart: cart._id };
 
         return await UserService.create(newUser);
@@ -41,7 +41,6 @@ export default class UserController {
         if (email === userAdmin.email && password === userAdmin.password) {
             return { first_name: userAdmin.first_name, last_name: userAdmin.last_name, email: userAdmin.email, role: userAdmin.role };
         }
-
         return await UserService.get(email);
     }
 
@@ -51,7 +50,6 @@ export default class UserController {
         if (id == "") {
             throw new Exception('Ingrese los valores correctamente', 400);
         }
-
         return await UserService.getById(id);
     }
 
