@@ -1,13 +1,13 @@
 import { Router } from "express";
 
-import CartManager from '../../dao/cartManager.js';
+import CartController from '../../controllers/cart.controller.js';
 
 const router = Router();
 
 router.get('/cart/:cId', async (req, res) => {
     try {
         const { params: { cId } } = req;
-        const cart = await CartManager.getCartById(cId);
+        const cart = await CartController.getById(cId);
         const { _id } = cart;
         const products = cart.products.map(p => p.toJSON());
         res.render('carts', { products, _id });
