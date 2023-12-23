@@ -6,11 +6,9 @@ import ProductController from '../../controllers/product.controller.js';
 const router = Router();
 
 router.get('/products', async (req, res) => {
-    console.log('Entro en ROUTER');
     const { query: { limit, page, sort, category, stock } } = req;
     try {
         res.status(200).json(await ProductController.get(limit, page, sort, category, stock));
-        console.log('Entro en ROUTER 2');
     } catch (error) {
         res.status(error.statusCode || 500).json({ message: error.message });
     }
